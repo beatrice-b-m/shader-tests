@@ -1,4 +1,7 @@
-# shader-tests
+# Shader Tests
+## Beatrice Brown-Mulry
+
+A collection of shader script tests (mainly using p5.js).
 
 Shield: [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 
