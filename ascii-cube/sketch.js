@@ -23,7 +23,7 @@ function setup() {
         
     describe('ascii cube shader test');
     
-    frameRate(60); 
+    frameRate(30); 
     
     gfx.noStroke();
     gfx.noFill();
