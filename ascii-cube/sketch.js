@@ -3,7 +3,7 @@ const sensitivityY = 1;
 const sensitivityZ = 0.1;
 const scaleFactor = 100;
 
-let gfx;
+let buffer;
 let cam;
 
 function preload() {
@@ -18,34 +18,34 @@ function setup() {
     createCanvas(400, 400, WEBGL);
     pixelDensity(1);
     
-    gfx = createGraphics(400, 400, WEBGL);
-    cam = gfx.createCamera();
+    buffer = createGraphics(400, 400, WEBGL);
+    cam = buffer.createCamera();
         
     describe('ascii cube shader test');
     
-    frameRate(30); 
+    frameRate(30);
     
-    gfx.noStroke();
-    gfx.noFill();
+    buffer.noStroke();
+    buffer.noFill();
 }
 
 function draw() {
     // clear the off-screen buffer
-    gfx.background(0);
-    gfx.ambientLight(100);
+    buffer.background(0);
+    buffer.ambientLight(100);
     
     // apply a slight constant rotation
-    gfx.rotateX(0.002);
-    gfx.rotateY(-0.006);
+    buffer.rotateX(0.002);
+    buffer.rotateY(-0.006);
     
     // draw a box
-    customBox(gfx, 150, 150, 150);
+    customBox(buffer, 150, 150, 150);
 
     // apply the shader to the scene
     shader(sketchShader);
 
-    // pass the off-screen buffer (gfx) as a texture to the shader
-    sketchShader.setUniform('iChannel0', gfx);
+    // pass the off-screen buffer as a texture to the shader
+    sketchShader.setUniform('iChannel0', buffer);
     sketchShader.setUniform('iResolution', [width, height]);
 
     // render a rectangle to apply the shader
